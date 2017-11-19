@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t rakshans1/android .
+  - docker run -d rakshans1/android
+  - docker ps -a
+  - docker run rakshans1/android /bin/sh -c "android list && mvn -v && gradle -v && java -version && ant -version"
